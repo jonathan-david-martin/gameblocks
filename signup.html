@@ -2,38 +2,25 @@
 <head>
 <link rel="stylesheet" href="login.css">
 
-
-
 </head>
 
-<script src="mongo.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-
 
 <script>
 
     var socket = io();
 
 
-
-var attempt = 3; // Variable to count number of attempts.
-// Below function Executes on click of login button.
 function validate(){
 var username = document.getElementById("username").value;
 var password = document.getElementById("password").value;
-    //if ( username == "gameblocks" && password == "gameuser"){
-//alert ("Login successfully");
-//window.location = "http://gameblocks.club"; // Redirecting to other page.
-  window.open("http://expresstest-env.us-east-1.elasticbeanstalk.com/");
+      window.open("http://expresstest-env.us-east-1.elasticbeanstalk.com/");
 
-
-//return false;
 }
-    
+
 
 
 function signup(){
-
 
     var username = document.getElementById("username").value;
     var email = document.getElementById("email").value;
@@ -45,9 +32,7 @@ function signup(){
     data_array[1] = email;
     data_array[2] = password;
 
-
     socket.emit('signup',data_array);
-
 
 }
 

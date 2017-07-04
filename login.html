@@ -8,12 +8,9 @@
 
 <script>
   var socket = io();
-//var attempt = 3; // Variable to count number of attempts.
-// Below function Executes on click of login button.
 
   socket.on('found one',function(data){
 
-    //alert("found user");
     window.open("http://expresstest-env.us-east-1.elasticbeanstalk.com","_self");
   });
 
@@ -22,14 +19,6 @@
 
     alert("did not find credentials");
   });
-
-  /**
-  socket.on('found one',function(data){
-    //play();
-    alert("login successful");
-    //window.open("http://expresstest-env.us-east-1.elasticbeanstalk.com");
-  });
-   **/
 
 
 function validate(){
@@ -43,28 +32,6 @@ function validate(){
 
   socket.emit('verify_creds',data_array);
 
-  if ( username == "gameblocks" && password == "gameuser"){
-//alert ("Login successfully");
-//window.location = "http://gameblocks.club"; // Redirecting to other page.
-  //window.open("http://aequoreagames.com/gameblocks/");
-
-
-//return false;
-  }
-
-
-  else{
-    //window.open("http://expresstest-env.us-east-1.elasticbeanstalk.com");
-//attempt --;// Decrementing by one.
-//alert("You have left "+attempt+" attempt;");
-// Disabling fields after 3 attempts.
-//if( attempt == 0){
-//document.getElementById("username").disabled = true;
-//document.getElementById("password").disabled = true;
-//document.getElementById("submit").disabled = true;
-//return false;
-//}
-  }
 }
 
 

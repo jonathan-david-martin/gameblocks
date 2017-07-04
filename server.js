@@ -1,8 +1,5 @@
-
-
-
 var hostname = '0.0.0.0';
-var port = process.env.PORT || 7611;
+var port = process.env.PORT || 3000;
 var express = require('express');
 var app = express();
 app.use(express.static(__dirname));
@@ -22,18 +19,8 @@ var uri = 'mongodb://user1:user1@ds145302.mlab.com:45302/gameblocks';
 
 
 io.on('connection', function(socket) {
-	console.log('connection');
-	//console.log('here is the socket id:' + socket.id);
-
-	//socket.on('join',function(data){
-		//trigger a particular even on this particular client object
-		//socket.emit('found one','socket join');
-
-	//});
 
 	socket.on('signup', function (msg) {
-
-		//socket.emit('found one','socket join');
 
 		var username = msg[0];
 		var email = msg[1];
@@ -61,8 +48,6 @@ io.on('connection', function(socket) {
 
 	socket.on('verify_creds', function (msg) {
 
-		//socket.emit('found one','socket join');
-
 		var username = msg[0];
 		var pw = msg[1];
 
@@ -72,7 +57,7 @@ io.on('connection', function(socket) {
 
 
 		mongodb.MongoClient.connect(uri, function (err, db) {
-			//socket.emit('found one','found one');
+
 			if (err) throw err;
 
 			var signup = db.collection('signup');
@@ -80,10 +65,7 @@ io.on('connection', function(socket) {
 			signup.findOne({username: msg[0],password: msg[1]}, function (err, result) {
 				console.log(result);
 				if(result !== null){
-					console.log("found one");
-					console.log(socket);
 					socket.emit('found one','found the record');
-					//socket.emit("found one");
 				}
 				else{
 
