@@ -3,6 +3,10 @@ var hostname = '0.0.0.0';
 var port = process.env.PORT || 3000;
 var express = require('express');
 var app = express();
+var cookie = require('cookie');
+var cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
 //app.use(express.static('static'));
 app.use("/static", express.static(__dirname + '/static'));
 
@@ -18,12 +22,22 @@ app.get('/', function(req, res){
 });
 
 app.get('/signup.html', function(req, res){
-	res.sendfile('signup.html');
+	res.redirect('signup.html');
 });
 
 
-app.get('/secret', function(req, res){
-	res.sendfile('index.html');
+app.get('/index.html', function(req, res){
+	var cookies = cookie.parse(req.headers.cookie || '');
+	//var cookies = cookie.parse(req.header.cookie);
+	console.log(cookies);
+	console.log('Cookies: ', req.cookies)
+	var goahead = cookies.goahead;
+	console.log(goahead);
+
+	if (goahead == 'true') {
+		res.sendfile('index.html');
+	}
+
 });
 
 
@@ -77,6 +91,7 @@ io.on('connection', function(socket) {
 			signup.findOne({username: msg[0],password: msg[1]}, function (err, result) {
 				console.log(result);
 				if(result !== null){
+					socket.authenticated = true;
 					socket.emit('found one','found the record');
 				}
 				else{

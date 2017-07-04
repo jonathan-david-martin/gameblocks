@@ -11,7 +11,10 @@
 
   socket.on('found one',function(data){
 
-    window.open("http://expresstest-env.us-east-1.elasticbeanstalk.com/secret","_self");
+    //window.open("http://expresstest-env.us-east-1.elasticbeanstalk.com/secret","_self");
+    document.cookie = "goahead=true";
+    window.open("/index.html","_self");
+
   });
 
 
