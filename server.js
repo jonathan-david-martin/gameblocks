@@ -1,8 +1,10 @@
+
 var hostname = '0.0.0.0';
 var port = process.env.PORT || 3000;
 var express = require('express');
 var app = express();
-app.use(express.static(__dirname));
+//app.use(express.static('static'));
+app.use("/static", express.static(__dirname + '/static'));
 
 var http = require('http');
 var server = http.Server(app);
@@ -12,14 +14,24 @@ var io = require('socket.io')(server);
 var mongodb = require('mongodb');
 
 app.get('/', function(req, res){
+	res.sendfile('login.html');
+});
+
+app.get('/signup.html', function(req, res){
 	res.sendfile('signup.html');
 });
+
+
+app.get('/secret', function(req, res){
+	res.sendfile('index.html');
+});
+
 
 var uri = 'mongodb://user1:user1@ds145302.mlab.com:45302/gameblocks';
 
 
 io.on('connection', function(socket) {
-
+	
 	socket.on('signup', function (msg) {
 
 		var username = msg[0];
@@ -57,7 +69,7 @@ io.on('connection', function(socket) {
 
 
 		mongodb.MongoClient.connect(uri, function (err, db) {
-
+			
 			if (err) throw err;
 
 			var signup = db.collection('signup');
