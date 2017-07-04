@@ -1,0 +1,55 @@
+
+<head>
+<link rel="stylesheet" href="login.css">
+
+</head>
+
+<script>
+var attempt = 3; // Variable to count number of attempts.
+// Below function Executes on click of login button.
+function validate(){
+var username = document.getElementById("username").value;
+var password = document.getElementById("password").value;if ( username == "gameblocks" && password == "gameuser"){
+//alert ("Login successfully");
+//window.location = "http://gameblocks.club"; // Redirecting to other page.
+  window.open("http://aequoreagames.com/gameblocks/");
+
+
+return false;
+}
+else{
+attempt --;// Decrementing by one.
+alert("You have left "+attempt+" attempt;");
+// Disabling fields after 3 attempts.
+if( attempt == 0){
+document.getElementById("username").disabled = true;
+document.getElementById("password").disabled = true;
+document.getElementById("submit").disabled = true;
+return false;
+}
+}
+}
+</script>
+
+
+<body>
+<form action="/action_page.php">
+  <div class="imgcontainer">
+    <img src="http://aequoreagames.com/levspics/logo.png" alt="Avatar" class="avatar" >
+  </div>
+
+  <div class="container">
+    <label><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" required id="username">
+
+    <label><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required id="password">
+
+    <button type="submit" onclick="validate()"/>Login</button>
+
+  </div>
+
+ 
+</form>
+
+</body>
