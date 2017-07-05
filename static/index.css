@@ -16,8 +16,27 @@ width:150px;
 height:150px;
 }
 
+
 input {
 font-family: 'VT323', monospace;
 }
 
+/**
+.hover  {
+  width:150px;
+  height:150px;
+}
+
+
+#wrapper.text {
+  position:relative;
+  bottom:0px;
+  left:0px;
+  visibility:hidden;
+}
+
+#wrapper:hover.text {
+  visibility:visible;
+}
+**/
 

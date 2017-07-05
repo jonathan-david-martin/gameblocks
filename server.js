@@ -60,7 +60,7 @@ io.on('connection', function(socket) {
 
 			var signup = db.collection('signup');
 
-			signup.insert({username: msg[0],email: msg[1],password: msg[1]}, function (err, result) {
+			signup.insert({username: msg[0],email: msg[1],password: msg[2]}, function (err, result) {
 
 				if (err) throw err;
 			});
