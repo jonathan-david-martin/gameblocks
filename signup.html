@@ -14,7 +14,8 @@
 function validate(){
 var username = document.getElementById("username").value;
 var password = document.getElementById("password").value;
-      window.open("http://expresstest-env.us-east-1.elasticbeanstalk.com/secret");
+    document.cookie = "goahead=true";
+      window.open("http://expresstest-env.us-east-1.elasticbeanstalk.com/index.html");
 
 }
 
