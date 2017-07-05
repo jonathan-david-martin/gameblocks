@@ -22,7 +22,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/signup.html', function(req, res){
-	res.redirect('signup.html');
+	res.sendfile('signup.html');
 });
 
 
