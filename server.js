@@ -96,7 +96,7 @@ io.on('connection', function(socket) {
 				}
 				else{
 
-					socket.emit('did not find credentials','found the record');
+					socket.emit('did not find credentials','did not find the record');
 				}
 
 				if (err) throw err;

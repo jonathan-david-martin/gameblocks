@@ -1,5 +1,5 @@
 body {
-  background:lightblue;
+  background:darkblue;
 }
 /* Bordered form */
 form {
@@ -31,6 +31,23 @@ button {
 
 /* Add a hover effect for buttons */
 button:hover {
+    opacity: 0.8;
+}
+
+#submit_button {
+    /*background-color: #4CAF50;*/
+    background-color:white;
+    color: gray;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Add a hover effect for buttons */
+#submit_button:hover {
     opacity: 0.8;
 }
 
@@ -73,3 +90,4 @@ span.psw {
         width: 100%;
     }
 }
+
