@@ -41,7 +41,7 @@ app.get('/index.html', function(req, res){
 });
 
 
-var uri = 'mongodb://user1:user1@ds145302.mlab.com:45302/gameblocks';
+var uri = 'mongodb://gameblocks:password@ds143608.mlab.com:43608/gameblocks';
 
 
 io.on('connection', function(socket) {
@@ -58,7 +58,7 @@ io.on('connection', function(socket) {
 
 			if (err) throw err;
 
-			var signup = db.collection('signup');
+			var signup = db.collection('passwords');
 
 			signup.insert({username: msg[0],email: msg[1],password: msg[2]}, function (err, result) {
 
@@ -86,7 +86,7 @@ io.on('connection', function(socket) {
 			
 			if (err) throw err;
 
-			var signup = db.collection('signup');
+			var signup = db.collection('passwords');
 
 			signup.findOne({username: msg[0],password: msg[1]}, function (err, result) {
 				console.log(result);
